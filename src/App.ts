@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import plansRouter from './router/PlansRouter';
 
 export default class App {
   public app: express.Express;
@@ -7,6 +8,7 @@ export default class App {
     this.app = express();
 
     this.config();
+    this.routes();
 
     this.app.get('/', (req: Request, res: Response) => res.json({ ok: true }));
   }
@@ -21,6 +23,10 @@ export default class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+  }
+
+  private routes(): void {
+    this.app.use('/plans', plansRouter);
   }
 
   public start(PORT: string | number): void {
