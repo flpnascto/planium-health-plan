@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import plansRouter from './router/PlansRouter';
 import errorMiddleware from './middlewares/errorMiddleware';
 
+import proposalRouter from './router/ProposalRoute';
+
 export default class App {
   public app: express.Express;
 
@@ -29,6 +31,7 @@ export default class App {
 
   private routes(): void {
     this.app.use('/plans', plansRouter);
+    this.app.use('/proposal', proposalRouter)
   }
 
   public start(PORT: string | number): void {
