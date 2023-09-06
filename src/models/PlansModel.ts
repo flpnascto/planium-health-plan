@@ -19,4 +19,10 @@ export default class PlansModel {
     })
     return plans;
   }
+
+  public async getByRegister(register: string): Promise<IPlan> {
+    const plans = await this.getAll();
+    const plan = plans.filter((plan) => plan.register === register);
+    return plan[0]
+  }
 }
