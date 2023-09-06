@@ -1,10 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-export type FileType = 'plans';
+export type FileType = 'plans' | 'prices';
 
 const PATHS = {
   plans: path.join(__dirname, 'database', 'plans.json'),
+  prices: path.join(__dirname, 'database', 'prices.json'),
 };
 
 export class HandleFile {
