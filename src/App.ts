@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import plansRouter from './router/PlansRouter';
+import errorMiddleware from './middlewares/errorMiddleware';
 
 export default class App {
   public app: express.Express;
@@ -11,6 +12,7 @@ export default class App {
     this.routes();
 
     this.app.get('/', (req: Request, res: Response) => res.json({ ok: true }));
+    this.app.use(errorMiddleware);
   }
 
   private config(): void {
