@@ -15,14 +15,17 @@ export default class PlansModel {
   public async getAll(): Promise<IPlan[]> {
     const result = await this.handleFile.readFile<IPlansJson[]>(this.fileType);
     const plans = result.map((plan) => {
-      return { register: plan.registro, name: plan.nome };
+      return { register: plan.registro, name: plan.nome, code: plan.codigo };
     })
     return plans;
   }
 
-  public async getByRegister(register: string): Promise<IPlan> {
+  public async getByRegister(register: string): Promise<IPlan | null> {
     const plans = await this.getAll();
-    const plan = plans.filter((plan) => plan.register === register);
-    return plan[0]
+    const plan = plans.find((plan) => plan.register === register);
+    if (plan === undefined) {
+      return null;
+    }
+    return plan;
   }
 }

@@ -27,9 +27,10 @@ export default class PriceModel {
     return prices;
   }
 
-  public async getById(planCode: number): Promise<IPrice[]> {
+  public async getById(planCode: number): Promise<IPrice[] | null> {
     const prices = await this.getAll();
-    const price = prices.filter((price) => price.planCode === planCode);
-    return price
+    const selectsPlans = prices.filter((price) => price.planCode === planCode);
+    if (selectsPlans.length === 0) return null;
+    return selectsPlans
   }
 }
