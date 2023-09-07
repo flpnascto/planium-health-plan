@@ -3,12 +3,14 @@ import { IPrice } from '../interfaces/IPrice';
 import { IItem, IProposalOutput } from '../interfaces/IProposal';
 import PlansModel from '../models/PlansModel';
 import PriceModel from '../models/PriceModel';
+import ProposalModel from '../models/ProposalModel';
 
 export default class ProposalService {
   private items: IItem[] = [];
   private planRegister: string = "";
   private readonly plansModel = new PlansModel();
   private readonly priceModel = new PriceModel();
+  private readonly proposalModel = new ProposalModel();
 
 
   public async createProposal(items: IItem[], planRegister: string): Promise<IProposalOutput> {
@@ -67,6 +69,8 @@ export default class ProposalService {
       clients: this.items,
       totalPrice
     }
+
+    await this.proposalModel.create(proposal);
     return proposal
   }
 }

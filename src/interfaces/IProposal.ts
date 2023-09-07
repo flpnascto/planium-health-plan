@@ -1,11 +1,11 @@
 interface IItem {
-  name: string,
-  age: number,
-  price: number,
+  name: string;
+  age: number;
+  price: number;
 }
 
 interface IProposalInput {
-  items: IItem[]
+  items: IItem[];
   planRegister: string;
 }
 
@@ -14,8 +14,13 @@ interface IProposalOutput {
   totalPrice: number;
 }
 
+interface IProposal extends IProposalOutput {
+  id: string;
+}
+
 export {
   IItem,
+  IProposal,
   IProposalInput,
   IProposalOutput,
 }

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "4ef1ae40-d010-45c8-b818-51713dec511a",
+    "clients": [
+      {
+        "name": "Cliente 1",
+        "age": 30,
+        "price": 11
+      },
+      {
+        "name": "Cliente 2",
+        "age": 15,
+        "price": 9
+      },
+      {
+        "name": "Cliente 3",
+        "age": 7,
+        "price": 9
+      },
+      {
+        "name": "Cliente 4",
+        "age": 41,
+        "price": 14
+      }
+    ],
+    "plan_code": 1,
+    "total_price": 43
+  }
+]
