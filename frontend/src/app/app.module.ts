@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProposalFormComponent } from './proposal-form/proposal-form.component';
 import { FormsModule } from '@angular/forms';
+import { ClientInfoComponent } from './client-info/client-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProposalFormComponent
+    ProposalFormComponent,
+    ClientInfoComponent
   ],
   imports: [
     BrowserModule,

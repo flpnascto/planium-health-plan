@@ -10,6 +10,11 @@ interface IPlan {
   code: number;
 }
 
+interface IItem {
+  name: string;
+  age: number;
+}
+
 @Component({
   selector: 'proposal-form',
   templateUrl: './proposal-form.component.html',
@@ -20,22 +25,11 @@ export class ProposalFormComponent {
   clientQuantity: number = 1;
   plans: IPlan[]= [];
   selectedPlan: string = '';
+  clientData: IItem[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.fetchPlans();
-    // this.http.get(plansRoute)
-    //   .subscribe(response => {
-    //     const plans = response as IPlan[];
-    //     this.selectedPlan = plans[0].register;
-    //     console.log('Cadastro realizado com sucesso:', response);
-    //   }, error => {
-    //     console.error('Erro ao requisitar os planos:', error);
-    //   });
-  }
-
-  fetchPlans() {
     this.http.get(plansRoute)
       .subscribe((response) => {
         this.plans = response as IPlan[];
@@ -48,11 +42,22 @@ export class ProposalFormComponent {
       });
   }
 
+  updateClientData(clientData: IItem) {
+    // Certifique-se de que o clientData seja válido antes de adicioná-lo à matriz
+    if (clientData.name && clientData.age >= 0) {
+      this.clientData.push(clientData);
+    }
+    console.log('Dados do cliente:', this.clientData);
+  }
+
 
   register() {
     const data = {
-      clientQuantity: this.clientQuantity,
-      selectedPlan: this.selectedPlan
+      selectedPlan: this.selectedPlan,
+      items: this.clientData,
     }
+
+  
+    console.log('Dados do cliente:', data);
   }
 }

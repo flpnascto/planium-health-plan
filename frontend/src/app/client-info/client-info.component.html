@@ -1,0 +1,12 @@
+<form #clientForm="ngForm">
+  <div class="form-group">
+    <label for="clientName">Nome do Cliente</label>
+    <input type="text" id="clientName" name="clientName" [(ngModel)]="clientName" required>
+  </div>
+
+  <div class="form-group">
+    <label for="clientAge">Idade do Cliente</label>
+    <input type="number" id="clientAge" name="clientAge" [(ngModel)]="clientAge" required>
+  </div>
+</form>
+<button type="button" (click)="addClient()">Adicionar Cliente</button>

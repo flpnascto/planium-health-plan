@@ -13,5 +13,13 @@
     </select>
   </div>
 
+  <div
+    class="form-group"
+    *ngFor="let _ of [].constructor(clientQuantity); let i = index">
+
+    <app-client-info (clientDataAdded)="updateClientData($event)"></app-client-info>
+
+  </div>
+
   <button type="submit">Cadastrar</button>
 </form>
