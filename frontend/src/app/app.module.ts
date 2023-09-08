@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ProposalFormComponent } from './proposal-form/proposal-form.component';
 import { FormsModule } from '@angular/forms';
 import { ClientInfoComponent } from './client-info/client-info.component';
+import { ProposalInfoComponent } from './proposal-info/proposal-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProposalFormComponent,
-    ClientInfoComponent
+    ClientInfoComponent,
+    ProposalInfoComponent
   ],
   imports: [
     BrowserModule,

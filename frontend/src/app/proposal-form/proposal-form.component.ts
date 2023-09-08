@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ProposalDataService } from '../shared/proposal-data.service';
+import { IClient } from '../shared/models/client.model'; // Importe a interface IClient
+import { IProposal } from '../shared/models/proposal.model';
+
 
 const API_URL = 'http://localhost:3000';
 const plansRoute = `${API_URL}/plans`;
+const proposalRoute = `${API_URL}/proposal`;
+
 
 interface IPlan {
   register: string;
@@ -27,7 +34,11 @@ export class ProposalFormComponent {
   selectedPlan: string = '';
   clientData: IItem[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private proposalDataService: ProposalDataService
+  ) {}
 
   ngOnInit() {
     this.http.get(plansRoute)
@@ -53,11 +64,17 @@ export class ProposalFormComponent {
 
   register() {
     const data = {
-      selectedPlan: this.selectedPlan,
+      planRegister: this.selectedPlan,
       items: this.clientData,
     }
 
-  
-    console.log('Dados do cliente:', data);
+    this.http.post(proposalRoute, data)
+      .subscribe((response) => {
+        console.log('Proposta registrada com sucesso:', response);
+        this.proposalDataService.setProposal(response as IProposal);
+        this.router.navigate(['/proposal']);
+      }, error => {
+        console.error('Erro ao registrar a proposta:', error);
+      });
   }
 }
