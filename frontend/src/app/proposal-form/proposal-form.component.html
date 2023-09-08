@@ -1,25 +1,46 @@
-<form (ngSubmit)="register()" #form="ngForm">
-  <div class="form-group">
-    <label for="clientQuantity">Quantidade de Funcionários</label>
-    <input type="number" id="clientQuantity" name="clientQuantity" [(ngModel)]="clientQuantity"
-      required>
+<div class="container">
+  <div class="content">
+    <div class="header">
+      <img
+        src="https://www.planium.io/wordpress/wp-content/uploads/2018/11/logo-Planium-05.svg"
+        alt="Planium Logo"
+        height="50px"
+      >
+      <h1>Proposta</h1>
+      <p>Para começar, preencha os dados abaixo!</p>
+    </div>
+
+    <div class="form-container">
+      <form (ngSubmit)="register()" #form="ngForm">
+        <div class="form-group">
+          <label for="clientQuantity">Quantidade de Funcionários</label>
+          <input type="number" id="clientQuantity" name="clientQuantity" [(ngModel)]="clientQuantity" min="1">
+        </div>
+    
+        <div class="form-group">
+          <label for="plans">Escolha um plano</label>
+          <select id="plans" name="plans" [(ngModel)]="selectedPlan" required>
+            <option *ngFor="let plan of plans" [ngValue]="plan.register">{{ plan.name }}</option>
+          </select>
+        </div>
+    
+        <div class="form-group" *ngFor="let _ of [].constructor(clientQuantity); let i = index">
+          <app-client-info (clientDataAdded)="updateClientData($event)"></app-client-info>
+        </div>
+    
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+    <div class="footer">
+      Criado por: Felipe Nascimento
+    </div>
   </div>
+  
+</div>
 
 
-  <div class="form-group">
-    <label for="plans">Escolha um plano</label>
-    <select id="plans" name="plans" [(ngModel)]="selectedPlan" required>
-      <option *ngFor="let plan of plans" [ngValue]="plan.register">{{ plan.name }}</option>
-    </select>
-  </div>
 
-  <div
-    class="form-group"
-    *ngFor="let _ of [].constructor(clientQuantity); let i = index">
 
-    <app-client-info (clientDataAdded)="updateClientData($event)"></app-client-info>
 
-  </div>
 
-  <button type="submit">Cadastrar</button>
-</form>

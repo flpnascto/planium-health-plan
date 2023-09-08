@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ProposalDataService } from '../shared/proposal-data.service';
-import { IClient } from '../shared/models/client.model'; // Importe a interface IClient
 import { IProposal } from '../shared/models/proposal.model';
 
 
@@ -54,7 +53,6 @@ export class ProposalFormComponent {
   }
 
   updateClientData(clientData: IItem) {
-    // Certifique-se de que o clientData seja válido antes de adicioná-lo à matriz
     if (clientData.name && clientData.age >= 0) {
       this.clientData.push(clientData);
     }

@@ -1,17 +1,22 @@
-<h1>Proposta envada com sucesso!</h1>
+<div class="container">
+  <h1>Proposta envada com sucesso!</h1>
 
-<h3>Clientes</h3>
+  <div class="box">
+    <h3>Clientes</h3>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Preço</th>
+      </tr>
+      <tr *ngFor="let client of proposal.clients">
+        <td>{{client.name}}</td>
+        <td class="left">{{client.age}}</td>
+        <td class="left">{{client.price | currency:'BRL'}}</td>
+      </tr>
+    </table>
+    <h3> Valor total: {{proposal.totalPrice | currency:'BRL'}}</h3>
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Idade</th>
-    <th>Preço</th>
-  </tr>
-  <tr *ngFor="let client of proposal.clients">
-    <td>{{client.name}}</td>
-    <td>{{client.age}}</td>
-    <td>{{client.price}}</td>
-  </tr>
-</table>
-<h3> Valor total: {{proposal.totalPrice}}</h3>
+  </div>
+  
+</div>
