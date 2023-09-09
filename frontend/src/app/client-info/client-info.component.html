@@ -1,4 +1,4 @@
-<form #clientForm="ngForm">
+<form #clientForm="ngForm" class="container">
   <div class="form-group">
     <label for="clientName">Nome do Cliente</label>
     <input type="text" id="clientName" name="clientName" [(ngModel)]="clientName" required>
@@ -6,7 +6,7 @@
 
   <div class="form-group">
     <label for="clientAge">Idade do Cliente</label>
-    <input type="number" id="clientAge" name="clientAge" [(ngModel)]="clientAge" required>
+    <input type="number" id="clientAge" name="clientAge" [(ngModel)]="clientAge" style="width: 45px;" required>
   </div>
+  <button type="button" (click)="addClient()">Adicionar Cliente</button>
 </form>
-<button type="button" (click)="addClient()">Adicionar Cliente</button>
